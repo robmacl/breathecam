@@ -1,0 +1,792 @@
+Archive member included because of file (symbol)
+
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o (exit)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+                              main.o (__iob)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+                              main.o (printf)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o) (vfprintf)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o) (strnlen_P)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o) (strnlen)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o) (fputc)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o) (__ultoa_invert)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o) (__prologue_saves__)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o) (__epilogue_restores__)
+
+Allocating common symbols
+Common symbol       size              file
+
+DebugBuffer         0x64              main.o
+runServo            0x1               main.o
+servoCurrent        0x2               main.o
+__iob               0x6               /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00100000         xr
+data             0x00802000         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+LOAD main.o
+LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libm.a
+START GROUP
+LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a
+LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libm.a
+LOAD /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a
+END GROUP
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xab8
+ *(.vectors)
+ .vectors       0x00000000      0x178 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x00000178                . = ALIGN (0x2)
+                0x00000178                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000178        0x0 linker stubs
+ *(.trampolines*)
+                0x00000178                __trampolines_end = .
+ *(.progmem*)
+                0x00000178                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000178                __ctors_start = .
+ *(.ctors)
+                0x00000178                __ctors_end = .
+                0x00000178                __dtors_start = .
+ *(.dtors)
+                0x00000178                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000178        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+                0x00000178                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000178        0xc /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000184       0x16 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+                0x00000184                __do_copy_data
+ .init4         0x0000019a       0x10 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+                0x0000019a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000001aa        0x8 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+ *(.init9)
+ *(.text)
+ .text          0x000001b2        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+                0x000001b2                __vector_65
+                0x000001b2                __vector_22
+                0x000001b2                __vector_63
+                0x000001b2                __vector_28
+                0x000001b2                __vector_67
+                0x000001b2                __vector_1
+                0x000001b2                __vector_32
+                0x000001b2                __vector_75
+                0x000001b2                __vector_71
+                0x000001b2                __vector_91
+                0x000001b2                __vector_34
+                0x000001b2                __vector_62
+                0x000001b2                __vector_77
+                0x000001b2                __vector_24
+                0x000001b2                __vector_12
+                0x000001b2                __vector_55
+                0x000001b2                __vector_69
+                0x000001b2                __vector_81
+                0x000001b2                __vector_90
+                0x000001b2                __vector_46
+                0x000001b2                __bad_interrupt
+                0x000001b2                __vector_72
+                0x000001b2                __vector_6
+                0x000001b2                __vector_31
+                0x000001b2                __vector_92
+                0x000001b2                __vector_35
+                0x000001b2                __vector_78
+                0x000001b2                __vector_74
+                0x000001b2                __vector_39
+                0x000001b2                __vector_3
+                0x000001b2                __vector_23
+                0x000001b2                __vector_68
+                0x000001b2                __vector_30
+                0x000001b2                __vector_73
+                0x000001b2                __vector_45
+                0x000001b2                __vector_25
+                0x000001b2                __vector_93
+                0x000001b2                __vector_61
+                0x000001b2                __vector_11
+                0x000001b2                __vector_54
+                0x000001b2                __vector_13
+                0x000001b2                __vector_17
+                0x000001b2                __vector_19
+                0x000001b2                __vector_56
+                0x000001b2                __vector_7
+                0x000001b2                __vector_49
+                0x000001b2                __vector_41
+                0x000001b2                __vector_86
+                0x000001b2                __vector_64
+                0x000001b2                __vector_88
+                0x000001b2                __vector_43
+                0x000001b2                __vector_27
+                0x000001b2                __vector_5
+                0x000001b2                __vector_33
+                0x000001b2                __vector_76
+                0x000001b2                __vector_47
+                0x000001b2                __vector_52
+                0x000001b2                __vector_37
+                0x000001b2                __vector_89
+                0x000001b2                __vector_4
+                0x000001b2                __vector_44
+                0x000001b2                __vector_82
+                0x000001b2                __vector_51
+                0x000001b2                __vector_9
+                0x000001b2                __vector_2
+                0x000001b2                __vector_21
+                0x000001b2                __vector_15
+                0x000001b2                __vector_66
+                0x000001b2                __vector_36
+                0x000001b2                __vector_79
+                0x000001b2                __vector_70
+                0x000001b2                __vector_83
+                0x000001b2                __vector_29
+                0x000001b2                __vector_60
+                0x000001b2                __vector_40
+                0x000001b2                __vector_85
+                0x000001b2                __vector_8
+                0x000001b2                __vector_26
+                0x000001b2                __vector_48
+                0x000001b2                __vector_80
+                0x000001b2                __vector_14
+                0x000001b2                __vector_84
+                0x000001b2                __vector_57
+                0x000001b2                __vector_53
+                0x000001b2                __vector_10
+                0x000001b2                __vector_50
+                0x000001b2                __vector_16
+                0x000001b2                __vector_59
+                0x000001b2                __vector_18
+                0x000001b2                __vector_42
+                0x000001b2                __vector_87
+                0x000001b2                __vector_38
+ .text          0x000001b6      0x262 main.o
+                0x000001b6                Debug_SendByte
+                0x000001c4                Debug_Init
+                0x000001fe                Debug_CharReadyToRead
+                0x0000021a                Debug_GetByte
+                0x00000264                __vector_58
+                0x000002c2                __vector_20
+                0x00000376                Interrupts_Init
+                0x00000384                Current_Read
+                0x000003d2                CCPWrite
+                0x000003fc                Clock_Init
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text          0x00000418        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+                0x00000418                . = ALIGN (0x2)
+ *(.text.*)
+ .text.startup  0x00000418      0x122 main.o
+                0x00000418                main
+ .text.libgcc.mul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc   0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000053a        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000053a       0x28 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+                0x0000053a                printf
+ .text.avr-libc
+                0x00000562      0x3a4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+                0x00000562                vfprintf
+ .text.avr-libc
+                0x00000906       0x16 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+                0x00000906                strnlen_P
+ .text.avr-libc
+                0x0000091c       0x16 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+                0x0000091c                strnlen
+ .text.avr-libc
+                0x00000932       0x64 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+                0x00000932                fputc
+ .text.avr-libc
+                0x00000996       0xbc /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+                0x00000996                __ultoa_invert
+ .text.libgcc.mul
+                0x00000a52        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc.div
+                0x00000a52        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc   0x00000a52        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc.prologue
+                0x00000a52       0x32 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+                0x00000a52                __prologue_saves__
+ .text.libgcc.builtins
+                0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc.fmul
+                0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc.fixed
+                0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .text.libgcc.mul
+                0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ .text.libgcc.div
+                0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ .text.libgcc   0x00000a84        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ .text.libgcc.prologue
+                0x00000a84       0x30 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+                0x00000a84                __epilogue_restores__
+ .text.libgcc.builtins
+                0x00000ab4        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ .text.libgcc.fmul
+                0x00000ab4        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ .text.libgcc.fixed
+                0x00000ab4        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+                0x00000ab4                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000ab4        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+                0x00000ab4                exit
+                0x00000ab4                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000ab4        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000ab8                _etext = .
+
+.data           0x00802000       0x36 load address 0x00000ab8
+                0x00802000                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00802000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+ .data          0x00802000        0xe main.o
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .data          0x0080200e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0080200e       0x28 main.o
+ *(.gnu.linkonce.d*)
+                0x00802036                . = ALIGN (0x2)
+                0x00802036                _edata = .
+                0x00802036                PROVIDE (__data_end, .)
+
+.bss            0x00802036       0x75
+                0x00802036                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00802036        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+ .bss           0x00802036        0x8 main.o
+                0x00802036                currentCapCounter
+                0x00802037                servoSpeedCounter
+                0x00802039                command
+                0x0080203a                Debug_writeLocation
+                0x0080203c                Debug_readLocation
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .bss           0x0080203e        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0080203e       0x67 main.o
+                0x0080203e                DebugBuffer
+                0x008020a2                runServo
+                0x008020a3                servoCurrent
+ COMMON         0x008020a5        0x6 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+                0x008020a5                __iob
+                0x008020ab                PROVIDE (__bss_end, .)
+                0x00000ab8                __data_load_start = LOADADDR (.data)
+                0x00000aee                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008020ab        0x0
+                0x008020ab                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008020ab                PROVIDE (__noinit_end, .)
+                0x008020ab                _end = .
+                0x008020ab                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x11
+ *(.comment)
+ .comment       0x00000000       0x11 main.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+ .comment       0x00000000       0x12 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+ .comment       0x00000000       0x12 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+ .comment       0x00000000       0x12 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xc8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 main.o
+ .debug_aranges
+                0x00000028       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .debug_aranges
+                0x00000048       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .debug_aranges
+                0x00000068       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .debug_aranges
+                0x00000088       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .debug_aranges
+                0x000000a8       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1db2
+ *(.debug_info)
+ .debug_info    0x00000000     0x19e3 main.o
+ .debug_info    0x000019e3       0xc3 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .debug_info    0x00001aa6       0xc3 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .debug_info    0x00001b69       0xc3 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .debug_info    0x00001c2c       0xc3 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .debug_info    0x00001cef       0xc3 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x3a5
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x341 main.o
+ .debug_abbrev  0x00000341       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .debug_abbrev  0x00000355       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .debug_abbrev  0x00000369       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x0000037d       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .debug_abbrev  0x00000391       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+
+.debug_line     0x00000000      0x3bf
+ *(.debug_line)
+ .debug_line    0x00000000      0x1c7 main.o
+ .debug_line    0x000001c7       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+ .debug_line    0x0000021f       0x61 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+ .debug_line    0x00000280       0x5e /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+ .debug_line    0x000002de       0x71 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+ .debug_line    0x0000034f       0x70 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+
+.debug_frame    0x00000000      0x174
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x174 main.o
+
+.debug_str      0x00000000      0xefa
+ *(.debug_str)
+ .debug_str     0x00000000      0xefa main.o
+                                0xf53 (size before relaxing)
+
+.debug_loc      0x00000000      0x2de
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x2de main.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000       0x18
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x18 main.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(main.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+CCPWrite                                          main.o
+Clock_Init                                        main.o
+Current_Read                                      main.o
+DebugBuffer                                       main.o
+Debug_CharReadyToRead                             main.o
+Debug_GetByte                                     main.o
+Debug_Init                                        main.o
+Debug_SendByte                                    main.o
+Debug_readLocation                                main.o
+Debug_writeLocation                               main.o
+Interrupts_Init                                   main.o
+__bad_interrupt                                   /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__bss_end                                         /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+__bss_start                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+__data_end                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+__data_load_start                                 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+__data_start                                      /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+__do_clear_bss                                    /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_clear_bss.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+                                                  main.o
+__do_copy_data                                    /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_copy_data.o)
+                                                  main.o
+__epilogue_restores__                             /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_epilogue.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+__heap_end                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__init                                            /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__iob                                             /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(iob.o)
+                                                  main.o
+__prologue_saves__                                /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_prologue.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+__stack                                           /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__ultoa_invert                                    /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(ultoa_invert.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+__vector_1                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_10                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_11                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_12                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_13                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_14                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_15                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_16                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_17                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_18                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_19                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_2                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_20                                       main.o
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_21                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_22                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_23                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_24                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_25                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_26                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_27                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_28                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_29                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_3                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_30                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_31                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_32                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_33                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_34                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_35                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_36                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_37                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_38                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_39                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_4                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_40                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_41                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_42                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_43                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_44                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_45                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_46                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_47                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_48                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_49                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_5                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_50                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_51                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_52                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_53                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_54                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_55                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_56                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_57                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_58                                       main.o
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_59                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_6                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_60                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_61                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_62                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_63                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_64                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_65                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_66                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_67                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_68                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_69                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_7                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_70                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_71                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_72                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_73                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_74                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_75                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_76                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_77                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_78                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_79                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_8                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_80                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_81                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_82                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_83                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_84                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_85                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_86                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_87                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_88                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_89                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_9                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_90                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_91                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_92                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_93                                       /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vector_default                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+__vectors                                         /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+_exit                                             /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+command                                           main.o
+currentCapCounter                                 main.o
+exit                                              /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avrxmega2/libgcc.a(_exit.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+fputc                                             /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(fputc.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+main                                              main.o
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/crtx32a4.o
+printf                                            /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
+                                                  main.o
+runServo                                          main.o
+servoCurrent                                      main.o
+servoSpeedCounter                                 main.o
+strnlen                                           /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+strnlen_P                                         /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(strnlen_P.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+vfprintf                                          /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(vfprintf_std.o)
+                                                  /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avrxmega2/libc.a(printf.o)
