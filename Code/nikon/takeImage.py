@@ -1,10 +1,6 @@
-
-# v1 - 09/08/2016
-
 import time
 import os
 import glob
-import serial
 import sys
 import subprocess
 import ast
@@ -13,78 +9,29 @@ from datetime import datetime
 from time import gmtime, strftime, mktime
 
 
-
-gphoto2 = "gphoto2 --auto-detect"
-saveToMemorySD   = gphoto2+" --set-config capturetarget=1"
-saveToMemoryRAM  = gphoto2+" --set-config capturetarget=0"
-listFiles = gphoto2 + " --list-files"
-folderprefix = " --folder='"
-folderend = "\'"
-captureImageAndDownload = gphoto2+" --capture-image-and-download"
-
-NIKON_DIR = "/home/pi/nikon/"
-LOG_DIR = NIKON_DIR+"logs/"
+HOME_DIR = "/home/pi/nikon/"
+LOG_DIR = HOME_DIR+"logs/"
 LOG_DIR_OLD = LOG_DIR+"old/"
-IMAGE_DIR = NIKON_DIR + "images/"
+IMAGE_DIR = HOME_DIR + "images/"
 IMAGE_DIR_OLD = "/root/"
 CONFIG_DIR = "config_files/"
 
 interval = 5
 
-ser = serial.Serial('/dev/ttyUSB0')
-
-f = open(NIKON_DIR+CONFIG_DIR+'id.txt','r')
+f = open(HOME_DIR+CONFIG_DIR+'id.txt','r')
 id = (f.readline()).strip()
 p = '{\'id\': \"'+id+'\"}'
 payload = ast.literal_eval(p)
 f.close()
 
-s = open(NIKON_DIR+CONFIG_DIR+'pingserver.txt','r')
+s = open(HOME_DIR+CONFIG_DIR+'pingserver.txt','r')
 pingurl = s.readline().strip()
 s.close()
 
 uuid = "".join("{:02x}".format(ord(c)) for c in id)
 pingpayload = "id="+id + "&uuid=" + uuid
 
-def nousb():
-    print "turn camera off"
-    ser.write('C')
-    time.sleep(0.5)
 
-    print "turn usb off"
-    ser.write('U')
-    time.sleep(2.0)
-
-    print "turn camera back on"
-    ser.write('c')
-    time.sleep(3.0)
-
-    print "press power button"
-    ser.write('s')
-    time.sleep(6.0)
-    return
-
-def powercycle():
-    write("turn camera off")
-    ser.write('C')
-    time.sleep(0.5)
-
-    write("turn usb off")
-    ser.write('U')
-    time.sleep(2.0)
-
-    write("turn camera back on")
-    ser.write('c')
-    time.sleep(3.0)
-
-    write("press power button")
-    ser.write('s')
-    time.sleep(6.0)
-
-    write("turn usb back on")
-    ser.write('u')
-    time.sleep(5.0)
-    return
 
 def removePics():
     try:
@@ -182,13 +129,6 @@ time.sleep(30)
 
 write("Removing old files on computer")
 removePics()
-
-write("Power cycle camera")
-powercycle()
-
-
-write("Tell camera to save to memory")
-write("\r\n"+subprocess.check_output(saveToMemoryRAM, shell=True))
 
 while True:
     startTime = time.time()
