@@ -82,8 +82,3 @@ RPI SETUP
 		@reboot sh /home/pi/nikon/remoteDesktop_launcher.sh
 - reboot and test
 	> sudo reboot
-
-
-
-
-
