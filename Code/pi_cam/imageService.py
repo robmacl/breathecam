@@ -3,6 +3,7 @@ from shutil import disk_usage
 import time
 import logging
 from os.path import exists
+from serviceConfig import ServiceConfig
 
 class ImageService:
     # Command and options for image capture, -o <file> is added below
@@ -11,30 +12,16 @@ class ImageService:
     # Grab image every this many seconds
     interval = 5;
 
-    def __init__(self, base):
-        self.base_dir = base
-        # init logging
-        # filename='example.log'
-        # encoding='utf-8', 
-        logging.basicConfig(level=logging.DEBUG,
-                            format='%(asctime)s: %(message)s')
+    def __init__(self, config):
+        self.config = config
         self.last_grab = 0
 
-    def logDir(self):
-        return self.base_dir + "logs/"
-
-    def imageDir(self):
-        return self.base_dir + "images/"
-        
-    def configDir(self):
-        return self.base_dir + "config_files/"
-
     def checkDiskUsage(self):
-        wot = disk_usage(self.base_dir)
+        wot = disk_usage(self.config.baseDir())
         return wot.used / wot.total
 
     def grabOne(self):
-        ofile = self.imageDir() + str(int(time.time()*1e3)) + ".jpg"
+        ofile = self.config.imageDir() + str(int(time.time()*1e3)) + ".jpg"
         cmd = self.grab_cmd + " -o " + ofile
         logging.info("Running " + cmd)
         proc = subprocess.run(cmd.split(), stdout=subprocess.DEVNULL,
@@ -72,5 +59,5 @@ class ImageService:
 
 
 if __name__ == '__main__':
-    svc = ImageService('./');
+    svc = ImageService(ServiceConfig('./', 'image'))
     svc.run()
