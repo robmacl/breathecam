@@ -1,12 +1,12 @@
 import subprocess
-import shutil
+from shutil import disk_usage
 import time
 import logging
 from os.path import exists
 
 class ImageService:
     # Command and options for image capture, -o <file> is added below
-    grab_cmd = "libcamera-still -n -t 0"
+    grab_cmd = "libcamera-still -n -t 1"
 
     # Grab image every this many seconds
     interval = 5;
@@ -15,7 +15,8 @@ class ImageService:
         self.base_dir = base
         # init logging
         # filename='example.log'
-        logging.basicConfig(encoding='utf-8', level=logging.DEBUG,
+        # encoding='utf-8', 
+        logging.basicConfig(level=logging.DEBUG,
                             format='%(asctime)s: %(message)s')
         self.last_grab = 0
 
@@ -29,34 +30,36 @@ class ImageService:
         return self.base_dir + "config_files/"
 
     def checkDiskUsage(self):
-        wot = shutil.disk_usage(self.base_dir)
+        wot = disk_usage(self.base_dir)
         return wot.used / wot.total
 
     def grabOne(self):
         ofile = self.imageDir() + str(int(time.time()*1e3)) + ".jpg"
-        cmd = grab_cmd + " -o " + ofile
+        cmd = self.grab_cmd + " -o " + ofile
         logging.info("Running " + cmd)
-        proc = subprocess.run(cmd)
+        proc = subprocess.run(cmd.split(), stdout=subprocess.DEVNULL,
+                              stderr=subprocess.DEVNULL)
         if exists(ofile):
             return ofile
         else:
-            logging.warning("Failed to create output file")
+            logging.warning("Output file not created: %s", cmd)
             return ""
             
     def grabLoop(self):
         while True:
             startTime = time.time()
-            if startTime > (last_grab + interval):
-                usage = checkDiskUsage()
-                logging.info("Disk Usage = "+str(usage)+"%")
+            if startTime > (self.last_grab + self.interval):
+                usage = self.checkDiskUsage()
                 if usage < 0.9 :
                     ofile = self.grabOne()
-                    last_grab = startTime
+                    self.last_grab = startTime
                     # movePics(int(startTime))
                     endTime = time.time()
-                    logging.info("Grab took " + str(endTime - startTime) + " seconds")
+                    logging.info("Grab took %.2f seconds",
+                                 endTime - startTime);
                 else:
-                    logging.warning("Disk too full, not grabbing new image")
+                    logging.warning("Disk Usage %d%%, not grabbing new image",
+                                    int(usage * 100));
                     time.sleep(5.0)
             else:
                 time.sleep(0.1)
@@ -65,4 +68,9 @@ class ImageService:
         while not exists("/run/systemd/timesync/synchronized"):
            logging.info("waiting for time sync")
            time.sleep(5.0)
-           grabLoop()
+        self.grabLoop()
+
+
+if __name__ == '__main__':
+    svc = ImageService('./');
+    svc.run()
