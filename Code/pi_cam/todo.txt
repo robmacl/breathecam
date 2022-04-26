@@ -1,0 +1,10 @@
+Maybe log to a single file, and use append mode.  Not clear we really need to
+save old logs as opposed to appending.  Either way the space grows without
+bound.
+
+If things are consistently not working then a reboot might help.  This had
+formerly been done by takeImage.py exiting and then the launched rebooting
+after a number of fails.  imageService.py will exit if it gets an exception,
+but it presses on if we get a timeout or the file does not appear.
+ ==> Possibly this could be in a seperate watchdog process
+

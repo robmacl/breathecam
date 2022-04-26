@@ -4,66 +4,88 @@ import glob
 import os
 import os.path
 from sys import exc_info
+import configparser
 
 class ServiceConfig:
     '''Wraps common code for reading configuration and logger initialization.'''
     def __init__(self, base_dir, logname):
+        # Root directory of breathecam working tree (and of the git repo)
         self._base_dir = os.path.realpath(base_dir) + '/';
-        self._log_start(logname)
-        self._id = ""
-        self._url = ""
+        # String name identifying this camera to the upload served
+        self._camera_id = ""
+        # URL for the upload server
+        self._upload_url = ""
+        # ConfigParser for breathecam.ini
+        self.parser = []
+        # Logger instance for this service
+        self.logger = []
+
+        self._wait_for_time()
         self._read_config()
-        logging.info('Log started: ID=%s URL=%s', self._id, self._url);
+        self._log_start(logname)
+        self.logger.info('Log started: ID=%s URL=%s', self._camera_id, self._upload_url);
+
+    def _wait_for_time (self):
+        # Wait until the system clock is synchronized.  In the current scheme
+        # where the timestamp is in the log file name we can't create the log
+        # file until we have the time.  Also this insures that none of our
+        # services start until we have the time.
+        while not os.path.exists("/run/systemd/timesync/synchronized"):
+            print("waiting for time sync")
+            time.sleep(5.0)
 
     def _log_start(self, logname):
         # Save old log files and open a new one. We only move files for
         # our 'logname' to avoid a race condition with other processes where
-        # we move their newly opened logs.  If we used threads then there
-        # could be just one logger, which would simplify things.
+        # we move their newly opened logs.
+        #
+        # If we used threads then there could be just one logger, which
+        # would simplify things.  Even without threads we probably
+        # could exploit the append behavior of logging to log all to
+        # the same file.
         try:
-            os.makedirs(self.logDir(), exist_ok = True)
-            old_logdir = self.logDir() + 'old/' 
+            os.makedirs(self.log_dir(), exist_ok = True)
+            old_logdir = self.log_dir() + 'old/' 
             os.makedirs(old_logdir, exist_ok = True)
 
-            listOfFilesToMove = glob.glob(self.logDir() + logname + "_*.txt")
+            listOfFilesToMove = glob.glob(self.log_dir() + logname + "_*.txt")
             for fileToMove in listOfFilesToMove:
                 print("Saving old log "+ fileToMove)
                 base = os.path.basename(fileToMove)
-                os.rename(self.logDir() + base, old_logdir + base)
+                os.rename(self.log_dir() + base, old_logdir + base)
         except:
             print("Error moving log file" + str(exc_info()[0]))
 
-        logfile = (self.logDir() + logname + '_' +
+        log_file = (self.log_dir() + logname + '_' +
                    str(int(time.time())) + ".txt")
-        # encoding='utf-8', 
-        logging.basicConfig(level=logging.DEBUG,
-                            filename=logfile,
+        # encoding='utf-8',
+        log_level = logging.getLevelName(self.parser['breathecam']['log_level'])
+        logging.basicConfig(level=log_level, filename=log_file,
                             format='%(asctime)s %(name)s %(levelname)s: %(message)s')
+        self.logger = logging.getLogger(logname)
 
     def _read_config(self):
-        f = open(self.configDir() + 'id.txt', 'r')
-        self._id = (f.readline()).strip()
-        f.close()
-        g = open(self.configDir() + 'server.txt', 'r')
-        self._url = g.readline().strip()
-        g.close()
+        self.parser = configparser.ConfigParser()
+        self.parser.read(self.config_dir() + "breathecam.ini")
+        self._camera_id = self.parser["breathecam"]["camera_id"]
+        self._upload_url = self.parser["breathecam"]["upload_url"]
 
-    def baseDir(self):
+    def base_dir(self):
         return self._base_dir
 
-    def cameraID(self):
-        return self._id
+    def camera_id(self):
+        return self._camera_id
 
-    def serverURL(self):
-        return self._url
+    def upload_url(self):
+        return self._upload_url
 
-    def logDir(self):
+    def log_dir(self):
         return self._base_dir + "logs/"
 
-    def imageDir(self):
+    def image_dir(self):
         return self._base_dir + "images/"
         
-    def configDir(self):
+    def config_dir(self):
         return self._base_dir + "config_files/"
 
 

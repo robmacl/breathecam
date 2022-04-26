@@ -5,7 +5,7 @@ i=0
 while  [ $i -lt 5 ]
 do
 	echo "Starting up python script: $i"
-	sudo python /home/pi/nikon/takeImage.py
+	python3 imageService.py
 	echo "Python script ended: $i"
 	i=`expr $i + 1`
 	sleep 30

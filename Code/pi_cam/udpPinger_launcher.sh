@@ -2,5 +2,5 @@
 
 while :
 do
-	sudo python /home/pi/nikon/udpPinger.py
+	python3 udpPinger.py
 done

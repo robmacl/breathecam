@@ -2,5 +2,5 @@
 
 while :
 do
-	sudo python /home/pi/nikon/pingServer.py
+	python3 pingServer.py
 done

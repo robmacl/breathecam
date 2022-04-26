@@ -2,8 +2,8 @@ import subprocess
 from shutil import disk_usage
 import time
 import logging
-from os.path import exists
 from serviceConfig import ServiceConfig
+from os.path import exists
 
 class ImageService:
     # Command and options for image capture, -o <file> is added below
@@ -14,24 +14,36 @@ class ImageService:
 
     def __init__(self, config):
         self.config = config
+        self.log = config.logger
         self.last_grab = 0
 
     def checkDiskUsage(self):
-        wot = disk_usage(self.config.baseDir())
+        wot = disk_usage(self.config.base_dir())
         return wot.used / wot.total
 
     def grabOne(self):
-        ofile = self.config.imageDir() + str(int(time.time()*1e3)) + ".jpg"
+        ofile = self.config.image_dir() + str(int(time.time())) + ".jpg"
         cmd = self.grab_cmd + " -o " + ofile
-        logging.info("Running " + cmd)
-        proc = subprocess.run(cmd.split(), stdout=subprocess.DEVNULL,
-                              stderr=subprocess.DEVNULL)
-        if exists(ofile):
-            return ofile
+        self.log.info("Running " + cmd)
+        result = ofile
+        try:
+            proc = subprocess.run(cmd.split(), capture_output=True, text=True,
+                                  timeout=30)
+
+        except subprocess.TimeoutExpired:
+            self.log.error("Timeout while running " + cmd)
+            result = ""
+
         else:
-            logging.warning("Output file not created: %s", cmd)
-            return ""
-            
+            if not(exists(ofile)) :
+                self.log.error("See capture_error.txt, no output from: %s", cmd)
+                with open(self.config.log_dir() + 'capture_error.txt', 'a') as f:
+                    f.write('\n\n' + proc.stderr)
+                result = ""
+        
+        return result
+
+
     def grabLoop(self):
         while True:
             startTime = time.time()
@@ -40,21 +52,16 @@ class ImageService:
                 if usage < 0.9 :
                     ofile = self.grabOne()
                     self.last_grab = startTime
-                    # movePics(int(startTime))
                     endTime = time.time()
-                    logging.info("Grab took %.2f seconds",
-                                 endTime - startTime);
+                    self.log.info("Grab took %.2f seconds", endTime - startTime);
                 else:
-                    logging.warning("Disk Usage %d%%, not grabbing new image",
-                                    int(usage * 100));
+                    self.log.warning("Disk Usage %d%%, not grabbing new image",
+                                     int(usage * 100));
                     time.sleep(5.0)
             else:
                 time.sleep(0.1)
 
     def run(self):
-        while not exists("/run/systemd/timesync/synchronized"):
-           logging.info("waiting for time sync")
-           time.sleep(5.0)
         self.grabLoop()
 
 

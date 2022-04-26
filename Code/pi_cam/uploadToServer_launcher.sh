@@ -2,5 +2,5 @@
 
 while :
 do
-	sudo python /home/pi/nikon/uploadToServer.py
+	python3 uploadToServer.py
 done
