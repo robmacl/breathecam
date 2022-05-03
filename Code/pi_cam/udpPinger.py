@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-# v1 - 09/08/2016
-
 import time
 import socket
 import glob
@@ -16,7 +14,7 @@ log = conf.logger
 UDP_IP = ""
 UDP_PORT = 6666
 
-print("starting application with id: " + conf.camera_id())
+log.info("udpPinger started, id: " + conf.camera_id())
 
 sock = socket(AF_INET, SOCK_DGRAM)
 sock.bind(('', 0))
