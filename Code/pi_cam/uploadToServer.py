@@ -62,11 +62,13 @@ while True:
                         log.warning("Failed to delete: "+listOfFiles[x])
             else:
                 log.error("Upload failed: " + response2)
+                # lets not hammer the poor server if it is failing
+                time.sleep(5)
         else:
             log.debug("No images to upload...")
             time.sleep(5)
 
     except:
-        log.error("Unexpected error: ", sys.exc_info())
+        # really any error
+        log.error("Unexpected error: " + str(sys.exc_info()[0]))
         time.sleep(5.0)
-        continue

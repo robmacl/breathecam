@@ -6,6 +6,7 @@ import time
 import requests
 import glob
 import logging
+import sys
 from serviceConfig import ServiceConfig
 
 conf = ServiceConfig('./', 'pingServer')
@@ -48,7 +49,6 @@ while True:
     # This is our watchdog code.  If we are pinging, but either:
     #  -- images are piling up, or
     #  -- we are not getting any new images
-    #
     # then we exit, which causes a reboot in the launcher script. 
     currentTime = int(time.time())
     files = glob.glob(conf.image_dir() + "*.jpg")

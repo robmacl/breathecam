@@ -4,7 +4,7 @@
 cd /home/breathecam/breathecam/Code/pi_cam
 
 # hack wait for other services to start so that we can run
-sleep 60
+#sleep 60
 
 runuser -c "mkdir -p logs" breathecam
 

@@ -52,14 +52,14 @@ class ImageService:
             if startTime > (self.last_grab + self.interval):
                 usage = self.checkDiskUsage()
                 if usage < 0.9 :
-                    ofile = self.grabOne()
+                    self.grabOne()
                     self.last_grab = startTime
                     endTime = time.time()
                     self.log.info("Grab took %.2f seconds", endTime - startTime);
                 else:
                     self.log.warning("Disk Usage %d%%, not grabbing new image",
                                      int(usage * 100));
-                    time.sleep(5.0)
+                    time.sleep(60)
             else:
                 time.sleep(0.1)
 
