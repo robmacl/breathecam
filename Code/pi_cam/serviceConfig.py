@@ -45,20 +45,19 @@ class ServiceConfig:
         # the same file.
         try:
             os.makedirs(self.log_dir(), exist_ok = True)
-            old_logdir = self.log_dir() + 'old/' 
-            os.makedirs(old_logdir, exist_ok = True)
-
-            listOfFilesToMove = glob.glob(self.log_dir() + logname + "_*.txt")
-            for fileToMove in listOfFilesToMove:
-                print("Saving old log "+ fileToMove)
-                base = os.path.basename(fileToMove)
-                os.rename(self.log_dir() + base, old_logdir + base)
+            # old_logdir = self.log_dir() + 'old/' 
+            # os.makedirs(old_logdir, exist_ok = True)
+            # listOfFilesToMove = glob.glob(self.log_dir() + logname + "_*.txt")
+            # for fileToMove in listOfFilesToMove:
+            #     print("Saving old log "+ fileToMove)
+            #     base = os.path.basename(fileToMove)
+            #     os.rename(self.log_dir() + base, old_logdir + base)
         except:
             print("Error moving log file" + str(exc_info()[0]))
 
-        log_file = (self.log_dir() + logname + '_' +
-                   str(int(time.time())) + ".txt")
-        # encoding='utf-8',
+        # log_file = (self.log_dir() + logname + '_' +
+        #            str(int(time.time())) + ".txt")
+        log_file = self.log_dir() + "breathecam.txt"
         log_level = logging.getLevelName(self.parser['breathecam']['log_level'])
         logging.basicConfig(level=log_level, filename=log_file,
                             format='%(asctime)s %(name)s %(levelname)s: %(message)s')

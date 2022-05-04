@@ -1,84 +1,20 @@
-CAMERA SETUP
-- insert battery
-- insert uSD Card
-- attach Lens
-- put in ‘P’ mode
-- turn on
-- setup menu
-	> english language
-	> london time zone
-	> any date format
-	> daylight savings off
-	> set current GMT time
-- Settings menu
-	> image review > off
-	> sound settings > all off
-- Portrait menu
-	> image quality > JPEG Normal
-	> image size > M
-	> white balance > AUTO
-- exposure compensation > -1
-- turn off
-- remove uSD card
-- remove battery
-
-
-
-
-
-
------------------------------
-
 RPI SETUP
 
-- format card using Disk Utility for fat, not exFAT (click on "UNTITLED" sub disk...)
-- copy contents of noobs folder onto card
-- boot up
-- install raspian (download from https://www.raspberrypi.org/downloads/noobs/)
-- remove GUI (allow to reboot)
-	> sudo raspi-config
-- reboot
-	> sudo reboot
-- copy nikon folder over
-- change id for camera
-	> cd ~/nikon/config_files/
-	> nano id.txt
+- install raspbian (download from https://www.raspberrypi.org/)
+  [NOTE: Arducam may require a specific patched distribution]
 - update and upgrade
 	> sudo apt-get update
 	> sudo apt-get upgrade
-- install requests
-	> cd ~/nikon/INSTALL/requests/
-	> sudo python setup.py install
-- install gphoto
-	> cd ~/nikon/INSTALL/gphoto2/
-	> sudo apt-get install gphoto2
-	> chmod u+x gphoto2-updater.sh
-	> sudo ./gphoto2-updater.sh   (install most stable (2.5.10))
-	> echo 'include /usr/local/lib' | sudo tee --append /etc/ld.so.conf
-	> cd ~/nikon/INSTALL/gphoto2/gphoto2-2.5.10_CUSTOM
-	> make
-	> sudo make install
-	> sudo ldconfig
-- install teamviewer
-	> cd ~/nikon/INSTALL/teamviewer/
-	> sudo dpkg -i teamviewer-host_armhf.deb
-	> sudo apt-get install -f
-	> teamviewer info
-		**copy the id for future use**
-- test power board and camera connection
-	> sudo python ~/nikon/powercycle.py
-	> gphoto2 --auto-detect
-- change permissions on launcher files
-	> chmod u+x ~/nikon/takeImage_launcher.sh
-	> chmod u+x ~/nikon/uploadToServer_launcher.sh
-	> chmod u+x ~/nikon/pingServer_launcher.sh
-	> chmod u+x ~/nikon/udpPinger_launcher.sh
-- make them launch on boot
+- remove GUI (allow to reboot)
+	> sudo raspi-config
+	> sudo reboot
+- git clone https://github.com/robmacl/breathecam.git
+- cd to rpi code tree
+     	> cd breathecam/Code/pi_cam
+- config_files/breathecam.ini to set "camera_id"
+- install remote access, TBD, save ID for remote connection
+- launch breathecam on boot
 	> sudo crontab -e	(add following to the bottom)
-		@reboot sh /home/pi/nikon/takeImage_launcher.sh
-		@reboot sh /home/pi/nikon/uploadToServer_launcher.sh
-		@reboot sh /home/pi/nikon/pingServer_launcher.sh
-		@reboot sh /home/pi/nikon/udpPinger_launcher.sh
-		@reboot sh /home/pi/nikon/remoteDesktop_launcher.sh
+		@reboot sh /home/breathecam/breathecam/Code/pi_cam/run_all.sh
 - reboot and test
 	> sudo reboot

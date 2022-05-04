@@ -3,6 +3,7 @@ from shutil import disk_usage
 import time
 import logging
 from serviceConfig import ServiceConfig
+import os
 from os.path import exists
 
 class ImageService:
@@ -45,6 +46,7 @@ class ImageService:
 
 
     def grabLoop(self):
+        os.makedirs(self.config.image_dir(), exist_ok=True)
         while True:
             startTime = time.time()
             if startTime > (self.last_grab + self.interval):

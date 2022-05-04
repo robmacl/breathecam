@@ -1,15 +1,9 @@
 #!/bin/sh
 
-i=0
+echo `date` ": imageService started" >>logs/imageService.out
 
-while  [ $i -lt 5 ]
+while :
 do
-	echo "Starting up python script: $i"
 	python3 imageService.py
-	echo "Python script ended: $i"
-	i=`expr $i + 1`
-	sleep 30
+	echo `date` ": imageService exited, restarting" >>logs/imageService.out
 done
-
-echo "Too many failures… restart"
-sudo reboot
