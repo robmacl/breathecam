@@ -18,3 +18,34 @@ RPI SETUP
 		@reboot sh /home/breathecam/breathecam/Code/pi_cam/run_all.sh
 - reboot and test
 	> sudo reboot
+
+
+Currently running with VNC not started and startup to command prompt.
+You can run the GUI from the console command line by:
+    startx
+
+It is possible that the GUI may be competing with the camera image
+capture for kernel DMA memory.  I've seen failures to allocate DMA
+"cma" memory.
+
+
+VNC access:
+
+ssh to pi
+See breathecam/Code/pi_cam/start_vnc script, has the below.
+
+    # start headless VNC
+    vncserver-virtual
+
+If no taskbar/pi menu in the VNC:
+    export DISPLAY=':1'
+    # Start window manager
+    startlxde-pi
+    # optional start terminal directly
+    lxterminal &
+
+Window manager not starting may have to do with VNC not being enabled
+at startup in pi config.  So by starting another server (it seems on
+display :0) this works better.  This explicit start creates the
+taskbar, but the window manager features of resizing windows is not
+started (and no window borders).

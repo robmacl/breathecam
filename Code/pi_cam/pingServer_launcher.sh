@@ -7,7 +7,7 @@
 echo `date` ": ping service started" >>logs/pingServer.out
 chown breathecam logs/pingServer.out
 
-runuser -c "python3 pingServer.py 2>&1 >>logs/pingServer.out" breathecam
+su -c "python3 pingServer.py 2>&1 >>logs/pingServer.out" breathecam
 
 echo `date` ": ping service exited (probable watchdog trigger), rebooting" >>logs/pingServer.out
 reboot

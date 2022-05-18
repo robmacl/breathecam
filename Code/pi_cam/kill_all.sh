@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/pi/breathecam/Code/pi_cam
+cd /home/breathecam/breathecam/Code/pi_cam
 
 # Kill launcher processes first to make sure they don't respawn the service
 # after we kill it.

@@ -7,8 +7,16 @@ import os
 from os.path import exists
 
 class ImageService:
-    # Command and options for image capture, -o <file> is added below
-    grab_cmd = "libcamera-still -n -t 1"
+    # Command and options for image capture, -o <file> is added below.
+    # This is not a shell command, it's just space separated words for
+    # convenience.  Probably this should be in the config file.
+    #
+    # Option meanings:
+    #   '-n': no preview
+    #   '-t 1': run for 1 millisecond in the (nonexistent) preview
+    #   '--rotation 180': because the camera is upside down
+    #
+    grab_cmd = "libcamera-still -n -t 1 --rotation 180"
 
     # Grab image every this many seconds
     interval = 5;
