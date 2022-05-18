@@ -15,7 +15,7 @@ RPI SETUP
 - install remote access, TBD, save ID for remote connection
 - launch breathecam on boot
 	> sudo crontab -e	(add following to the bottom)
-		@reboot sh /home/breathecam/breathecam/Code/pi_cam/run_all.sh
+		@reboot /home/breathecam/breathecam/Code/pi_cam/run_all.sh
 - reboot and test
 	> sudo reboot
 
@@ -49,3 +49,13 @@ at startup in pi config.  So by starting another server (it seems on
 display :0) this works better.  This explicit start creates the
 taskbar, but the window manager features of resizing windows is not
 started (and no window borders).
+
+
+TODO:
+
+ -- Remote access software
+ -- Procedure for camera preview (aiming and framing) in the field
+ -- Procedure for focus setting (use ROI)
+ -- Arducam camera mux support
+
+
