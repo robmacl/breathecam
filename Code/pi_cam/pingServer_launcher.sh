@@ -10,7 +10,12 @@ chown breathecam logs/pingServer.out
 su -c "python3 pingServer.py 2>&1 >>logs/pingServer.out" breathecam
 
 echo `date` ": ping service exited (probable watchdog trigger), rebooting, user" `whoami` >>logs/pingServer.out
-reboot --force
 
-sleep 15
-echo `date` ": OOPS! we didn't reboot, strange...  reboot returned $?" >>logs/pingServer.out
+# having really weird problems where just plain "reboot" wasn't doing the job.
+while :
+do
+    sudo reboot --force --force 
+    rc=$?
+    sleep 15
+    echo `date` ": OOPS! we didn't reboot, strange...  reboot returned $rc" >>logs/pingServer.out
+done
