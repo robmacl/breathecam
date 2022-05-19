@@ -1,61 +1,108 @@
 RPI SETUP
 
 - install raspbian (download from https://www.raspberrypi.org/)
-  [NOTE: Arducam may require a specific patched distribution]
+  NOTE: Arducam may require a specific patched kernel distribution, see below.
 - update and upgrade
 	> sudo apt-get update
 	> sudo apt-get upgrade
 - remove GUI (allow to reboot)
 	> sudo raspi-config
+	  Settings:
+	    Interfaces/enable VNC
+	    System/boot to desktop, auto login off
+	    Can set VNC display resolution to eg. 1280x1024
+	    Set hostname? xxx.breathecam.local
+	    Can set up wifi for debugging
 	> sudo reboot
 - git clone https://github.com/robmacl/breathecam.git
 - cd to rpi code tree
      	> cd breathecam/Code/pi_cam
-- config_files/breathecam.ini to set "camera_id"
-- install remote access, TBD, save ID for remote connection
 - launch breathecam on boot
 	> sudo crontab -e	(add following to the bottom)
 		@reboot /home/breathecam/breathecam/Code/pi_cam/run_all.sh
+- per-host config, see below
 - reboot and test
 	> sudo reboot
 
 
-Currently running with VNC not started and startup to command prompt.
-You can run the GUI from the console command line by:
-    startx
+Kernel and firmware:
 
-It is possible that the GUI may be competing with the camera image
-capture for kernel DMA memory.  I've seen failures to allocate DMA
-"cma" memory.
+There seem to be some issues with the new libcamera-based interfaces.  These
+are now standard, and are also being used in some form by Arducam.
+
+Some special configuration may be needed for Arducam:
+ -- For the 18 MP Arducam camera I had to use a specific system binary
+    distribution (recompiling the kernel is also supposed to work).
+ -- For the the Arducam mini HQ-camera I found that I had to "sudo
+    rpi-update".  This updates to the latest dev kernel, and also updates the
+    video firmware.  This camera seems not to be identical to the official
+    Raspberry Pi HQ camera, even though it uses the same sensor.
+
+
+Per-host config and SD copying:
+
+Except for per-host config much of this setup can be gotten by copying the SD
+card.  This config is per-host:
+ -- config_files/breathecam.ini to set "camera_id"
+ -- install remote access, see below.  Note the ZeroTier host address
+
+
+Remote access:
+
+We are currently using ZeroTier. Paul Dille says:
+________________________________________________________________
+On any Linux machine, it can be installed via:
+
+    curl -s https://install.zerotier.com | sudo bash
+
+And then to join the network run the following command:
+
+    sudo zerotier-cli join db64858fedb73ddd
+
+At that point, I will have to log into the admin controls and approve the
+device. You will also need to install the client software on whatever machine
+you plan to use to ssh into the embedded device(s). I'll also need to approve
+that machine. You'll use the same network ID (db64...) above. Mac/PC will have
+a GUI to plug the numbers into.
+
+Once it's installed on the linux device and on your laptop, I can give you the
+specific "local" IP of the linux device to connect. It'll be of the form:
+10.147.20.X
+________________________________________________________________
+
+I added my local IP to /etc/hosts as test.breathecam.local, etc.  On windows this is:
+    c:\windows\system32\drivers\etc\hosts
+
+We may want to set this as the DNS hostname in raspi-config.  Or maybe not.
+If we have a different local name, then we can access it on the local net.
 
 
 VNC access:
 
-ssh to pi
-See breathecam/Code/pi_cam/start_vnc script, has the below.
+It is possible that the GUI may be competing with the camera image capture for
+kernel DMA memory.  I've seen failures to allocate DMA "cma" memory.
 
-    # start headless VNC
-    vncserver-virtual
+I tried figuring out how to get VNC access working without starting the
+"lxsession" desktop by default, and using "vncserver -virtual", but haven't
+been able to get that to work.  Trying just vncserver-virtual after ssh in
+resulted in a usable display on :1, but there was no window manager or
+taskbar.  In principle you can just start those somehow, but I didn't get that
+to work.  See breathecam/Code/pi_cam/startvnc script.
 
-If no taskbar/pi menu in the VNC:
-    export DISPLAY=':1'
-    # Start window manager
-    startlxde-pi
-    # optional start terminal directly
-    lxterminal &
+INSTEAD: use rasbi-config in a terminal or the graphical version from the
+start menu, and enable "VNC" in interfaces.  This is the normal thing, and
+will create a :0 display.  If you set it to boot to command prompt then no VNC
+session will start on :0, and you will get a black screen with "currently
+unable to show the desktop".
 
-Window manager not starting may have to do with VNC not being enabled
-at startup in pi config.  So by starting another server (it seems on
-display :0) this works better.  This explicit start creates the
-taskbar, but the window manager features of resizing windows is not
-started (and no window borders).
+I also set it to not auto-login.  With these settings (VNC enabled, boot to
+desktop, no auto login), if you start headless, then it will not start all of
+the desktop stuff until you VNC connect and log in.  Not sure if it is
+actually running "virtual" or not.  Possibly resource usage by the VNC session
+could affect operation.
 
 
 TODO:
-
- -- Remote access software
  -- Procedure for camera preview (aiming and framing) in the field
  -- Procedure for focus setting (use ROI)
  -- Arducam camera mux support
-
-
