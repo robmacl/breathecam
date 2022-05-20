@@ -42,9 +42,10 @@ Some special configuration may be needed for Arducam:
 Per-host config and SD copying:
 
 Except for per-host config much of this setup can be gotten by copying the SD
-card.  This config is per-host:
- -- config_files/breathecam.ini to set "camera_id"
- -- install remote access, see below.  Note the ZeroTier host address
+card: "Start/Accessories/SD card copier".  This config is per-host and needs
+to be repeated:
+ -- edit breathecam/Code/pi_cam/config_files/breathecam.ini to set "camera_id"
+ -- install remote access, see below.
 
 
 Remote access:
@@ -70,6 +71,9 @@ specific "local" IP of the linux device to connect. It'll be of the form:
 10.147.20.X
 ________________________________________________________________
 
+Make a record the ZeroTier host address (10 digit code) for later remote
+access.
+    
 I added my local IP to /etc/hosts as test.breathecam.local, etc.  On windows this is:
     c:\windows\system32\drivers\etc\hosts
 

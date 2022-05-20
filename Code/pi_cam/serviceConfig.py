@@ -11,10 +11,20 @@ class ServiceConfig:
     def __init__(self, base_dir, logname):
         # Root directory of breathecam working tree (and of the git repo)
         self._base_dir = os.path.realpath(base_dir) + '/';
+
+        # These are cache variables for the parameters.  This is
+        # probably not necessary, people can just use the parser
+        # themselves.
+
         # String name identifying this camera to the upload served
         self._camera_id = ""
         # URL for the upload server
         self._upload_url = ""
+        # Options for libcamera-still
+        self._grab_cmd = ""
+        # Float frame interval
+        self._interval = ""
+
         # ConfigParser for breathecam.ini
         self.parser = []
         # Logger instance for this service
@@ -68,6 +78,8 @@ class ServiceConfig:
         self.parser.read(self.config_dir() + "breathecam.ini")
         self._camera_id = self.parser["breathecam"]["camera_id"]
         self._upload_url = self.parser["breathecam"]["upload_url"]
+        self._grab_cmd = self.parser["breathecam"]["grab_cmd"]
+        self._interval = float(self.parser["breathecam"]["interval"])
 
     def base_dir(self):
         return self._base_dir
@@ -77,6 +89,12 @@ class ServiceConfig:
 
     def upload_url(self):
         return self._upload_url
+
+    def grab_cmd(self):
+        return self._grab_cmd
+
+    def interval(self):
+        return self._interval
 
     def log_dir(self):
         return self._base_dir + "logs/"
