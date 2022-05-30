@@ -68,6 +68,12 @@ a GUI to plug the numbers into.
 Once it's installed on the linux device and on your laptop, I can give you the
 specific "local" IP of the linux device to connect. It'll be of the form:
 10.147.20.X
+
+To reset the ZeroTier identity after a disk/CF clone, do:
+    sudo service zerotier-one stop
+    sudo rm /var/lib/zerotier-one/identity.*
+    sudo service zerotier-one start
+
 ________________________________________________________________
 
 I added my local IP to /etc/hosts as test.breathecam.local, etc.  On windows this is:
@@ -89,11 +95,11 @@ resulted in a usable display on :1, but there was no window manager or
 taskbar.  In principle you can just start those somehow, but I didn't get that
 to work.  See breathecam/Code/pi_cam/startvnc script.
 
-INSTEAD: use rasbi-config in a terminal or the graphical version from the
-start menu, and enable "VNC" in interfaces.  This is the normal thing, and
-will create a :0 display.  If you set it to boot to command prompt then no VNC
-session will start on :0, and you will get a black screen with "currently
-unable to show the desktop".
+INSTEAD: use raspi-config in a terminal or the graphical version from
+the start menu, and enable "VNC" in interfaces.  This is the normal
+thing, and will create a :0 display.  Do not set the system to boot to
+command prompt, since no VNC session will start on :0, and you will
+get a black screen with "currently unable to show the desktop".
 
 I also set it to not auto-login.  With these settings (VNC enabled, boot to
 desktop, no auto login), if you start headless, then it will not start all of
