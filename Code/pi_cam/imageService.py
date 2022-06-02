@@ -7,20 +7,6 @@ import os
 from os.path import exists
 
 class ImageService:
-    # Command and options for image capture, -o <file> is added below.
-    # This is not a shell command, it's just space separated words for
-    # convenience.  Probably this should be in the config file.
-    #
-    # Option meanings:
-    #   '-n': no preview
-    #   '-t 1': run for 1 millisecond in the (nonexistent) preview
-    #   '--rotation 180': because the camera is upside down
-    #
-    grab_cmd = "libcamera-still -n -t 1 --rotation 180"
-
-    # Grab image every this many seconds
-    interval = 5;
-
     def __init__(self, config):
         self.config = config
         self.log = config.logger
@@ -32,7 +18,7 @@ class ImageService:
 
     def grabOne(self):
         ofile = self.config.image_dir() + str(int(time.time())) + ".jpg"
-        cmd = self.grab_cmd + " -o " + ofile
+        cmd = self.config.grab_cmd() + " -o " + ofile
         self.log.info("Running " + cmd)
         result = ofile
         try:
@@ -57,7 +43,7 @@ class ImageService:
         os.makedirs(self.config.image_dir(), exist_ok=True)
         while True:
             startTime = time.time()
-            if startTime > (self.last_grab + self.interval):
+            if startTime > (self.last_grab + self.config.interval()):
                 usage = self.checkDiskUsage()
                 if usage < 0.9 :
                     self.grabOne()
