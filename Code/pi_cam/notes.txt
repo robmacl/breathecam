@@ -70,7 +70,8 @@ specific "local" IP of the linux device to connect. It'll be of the form:
 10.147.20.X
 ________________________________________________________________
 
-I added my local IP to /etc/hosts as test.breathecam.local, etc.  On windows this is:
+I added my local IP to /etc/hosts as test.breathecam.local, etc.  On
+windows this is: 
     c:\windows\system32\drivers\etc\hosts
 
 We may want to set this as the DNS hostname in raspi-config.  Or maybe not.
