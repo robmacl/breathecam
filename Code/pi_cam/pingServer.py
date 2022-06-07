@@ -2,6 +2,7 @@
 
 # v1 - 09/08/2016
 
+import os
 import time
 import requests
 import glob
@@ -82,17 +83,17 @@ while True:
     #
     # It is possible that the "backlog increasing" test could keep
     # failing when the network is connected (allowing pings) but
-    # throughput is poor.
-    #
-    # Compared to the upload backlog test, when capture is failing the
-    # test is more confident, and a fix from rebooting is more likely.
+    # throughput is poor.  In comparison to this, when capture is
+    # failing the test is more confident, and a fix from rebooting is
+    # more likely.
     currentTime = int(time.time())
     files = glob.glob(conf.image_dir() + "*.jpg")
 
     # the age of the newest image file (sec)
     age = []
     for l in files:
-        l_time = int(l.split(conf.image_dir())[1].split('.jpg')[0])
+        #l_time = int(l.split(conf.image_dir())[1].split('.')[0])
+        l_time = os.stat(l).st_mtime
         diff = currentTime - l_time
         if not(age) or (diff < age):
             age = diff

@@ -5,20 +5,43 @@ import logging
 from serviceConfig import ServiceConfig
 import os
 from os.path import exists
+import ArducamMux
 
 class ImageService:
     def __init__(self, config):
         self.config = config
         self.log = config.logger
         self.last_grab = 0
+        bc = config.parser["breathecam"]
+        self.grab_cmd = bc["grab_cmd"]
+        self.camera_mux = int(bc["camera_mux"])
+        self.mux_channels = [int(x) for x in bc["mux_channels"].split()]
+        self.rotation = [int(x) for x in bc["rotation"].split()]
 
     def checkDiskUsage(self):
         wot = disk_usage(self.config.base_dir())
         return wot.used / wot.total
 
-    def grabOne(self):
-        ofile = self.config.image_dir() + str(int(time.time())) + ".jpg"
-        cmd = self.config.grab_cmd() + " -o " + ofile
+    def grabMulti(self):
+        now = int(time.time())
+        channels = self.mux_channels
+        for cam in range(len(channels)):
+            self.grabOne(now, cam)
+
+    def grabOne(self, now, cam):
+        ofile_base = self.config.image_dir() + str(now)
+        if self.camera_mux:
+            chan = self.mux_channels[cam]
+            ofile = ofile_base + "_" + str(cam+1) + ".jpg"
+            ArducamMux.select(chan)
+        else:
+            ofile = ofile_base + ".jpg"
+
+        cmd = self.grab_cmd + " -o " + ofile
+        rot = self.rotation[cam]
+        if rot != 0:
+            cmd += " --rotation " + str(rot)
+        
         self.log.info("Running " + cmd)
         result = ofile
         try:
@@ -46,7 +69,7 @@ class ImageService:
             if startTime > (self.last_grab + self.config.interval()):
                 usage = self.checkDiskUsage()
                 if usage < 0.9 :
-                    self.grabOne()
+                    self.grabMulti()
                     self.last_grab = startTime
                     endTime = time.time()
                     self.log.info("Grab took %.2f seconds", endTime - startTime);

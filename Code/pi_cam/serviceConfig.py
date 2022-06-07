@@ -20,8 +20,6 @@ class ServiceConfig:
         self._camera_id = ""
         # URL for the upload server
         self._upload_url = ""
-        # Options for libcamera-still
-        self._grab_cmd = ""
         # Float frame interval
         self._interval = ""
 
@@ -78,7 +76,6 @@ class ServiceConfig:
         self.parser.read(self.config_dir() + "breathecam.ini")
         self._camera_id = self.parser["breathecam"]["camera_id"]
         self._upload_url = self.parser["breathecam"]["upload_url"]
-        self._grab_cmd = self.parser["breathecam"]["grab_cmd"]
         self._interval = float(self.parser["breathecam"]["interval"])
 
     def base_dir(self):
@@ -89,9 +86,6 @@ class ServiceConfig:
 
     def upload_url(self):
         return self._upload_url
-
-    def grab_cmd(self):
-        return self._grab_cmd
 
     def interval(self):
         return self._interval
