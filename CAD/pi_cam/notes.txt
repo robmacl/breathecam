@@ -1,0 +1,30 @@
+Pi 4 dimensions:
+
+Needs approx 2.1mm below board
+Total stack height 20mm (bottom of ethernet pegs to top of USB3 jack)
+
+Height of current mount from top of plate to top of camera bracket is
+78mm. Height of camera bracket is 84mm.  It might be possible to fit
+if we make the housing standoffs stick up into the baseplate, and make
+cutouts for other interferences.
+
+But distance sideways is 95mm, so may make more sense to put the cards
+on edge, power connector up, spaced out sideways.  This solves the
+problem of the power connectors being cramped and inaccessible.  Then
+arrange airflow upward, air plenum under the plate.
+
+Mount on rPi crosswise allthread with unthreaded plastic spacers?
+Nice if we could assemble the stack and then drop it in
+
+Allow 2mm extra space, then:
+    22 * 4 = 88
+    95 - 88 = 7
+
+ 1.6 * 4 = 6.4
+ (95 - 6.4 - 5)/4 = 20.9
+
+If we use 20mm spacer on top, then we have 8.6mm left over This needs
+to be made up somehow by odd length spacers at the ends, or spreading
+it out.  The long thru rod length is about 112mm.  We need enough room
+on the bottom side for the nut on the non-thru rod.
+
