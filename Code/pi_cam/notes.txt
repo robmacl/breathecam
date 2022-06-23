@@ -33,10 +33,29 @@ are now standard, and are also being used in some form by Arducam.
 Some special configuration may be needed for Arducam:
  -- For the 18 MP Arducam camera I had to use a specific system binary
     distribution (recompiling the kernel is also supposed to work).
- -- For the the Arducam mini HQ-camera I found that I had to "sudo
-    rpi-update".  This updates to the latest dev kernel, and also updates the
+ -- For the the Arducam mini HQ-camera I found that I had to:
+        sudo rpi-update
+    This updates to the latest dev kernel, and also updates the
     video firmware.  This camera seems not to be identical to the official
     Raspberry Pi HQ camera, even though it uses the same sensor.
+    Also see boot_config.txt for "ram" config.txt patches in video
+    config. camera_auto_detect is off, some dtoverlay needed.
+ -- For the "Arducam multi-camera adapter board V2.2" the i2c_vc=on is
+    needed, this enables an i2c port on the media controller. Regular
+    i2c and the camera interfaces are also enabled, but this seems to
+    be the default.
+
+
+Arducam multi-camera adapter B012001 (multiplexer):
+
+
+This switches between four cameras at a pretty low level. Whichever
+camera is selected then appears as camera 0 for libcamera-still, etc.
+
+See:
+    https://www.arducam.com/docs/cameras-for-raspberry-pi/multi-camera-adapter-board/multi-camera-adapter-board-v2-1/
+But you don't need any of their code or suggested installs except to
+run their demos (not sure about wiringpi).
 
 
 Per-host config and SD copying:
@@ -110,7 +129,25 @@ actually running "virtual" or not.  Possibly resource usage by the VNC session
 could affect operation.
 
 
+Camera setup:
+
+In the field you can check that the camera is working, and the camera aiming,
+using the e-cam status page.
+
+The lenses should be pre-focused on a distant subject before taking the camera
+out for installation.  This works best using a small ROI (region of interest)
+with the libcamera-still preview mode, since this gives a high magnification
+and update rate.
+    libcamera-still -t 0 --roi 0.1,0.1,0.5,0.5
+
+This gives (maybe) a 10x zoom (0.1) at the middle of the frame (0.5).  You can
+move the ROI if needed.  Zoom is "maybe" because there seems to be a limit to
+the smallest ROI.  Adding --qt-preview gives a smaller window which will
+update faster over a VNC conncetion.  --qt-preview may also work when the
+default display doesn't.
+
+
 TODO:
- -- Procedure for camera preview (aiming and framing) in the field
- -- Procedure for focus setting (use ROI)
- -- Arducam camera mux support
+ -- ZeroTier on piquad
+ -- Watchdog for capture failing does not work with multi-camera when
+    at least one camera is working.
