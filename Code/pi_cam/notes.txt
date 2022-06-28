@@ -42,12 +42,11 @@ Some special configuration may be needed for Arducam:
     config. camera_auto_detect is off, some dtoverlay needed.
  -- For the "Arducam multi-camera adapter board V2.2" the i2c_vc=on is
     needed, this enables an i2c port on the media controller. Regular
-    i2c and the camera interfaces are also enabled, but this seems to
-    be the default.
+    i2c and the camera interfaces are also enabled, but that already
+    seems to be the default.
 
 
 Arducam multi-camera adapter B012001 (multiplexer):
-
 
 This switches between four cameras at a pretty low level. Whichever
 camera is selected then appears as camera 0 for libcamera-still, etc.
@@ -88,20 +87,24 @@ a GUI to plug the numbers into.
 Once it's installed on the linux device and on your laptop, I can give you the
 specific "local" IP of the linux device to connect. It'll be of the form:
 10.147.20.X
+________________________________________________________________
+
 
 To reset the ZeroTier identity after a disk/CF clone, do:
     sudo service zerotier-one stop
     sudo rm /var/lib/zerotier-one/identity.*
     sudo service zerotier-one start
 
-________________________________________________________________
+Likewise, if you want to keep an existing identity after a reinstall,
+you can copy the old identity.* to the new card.
 
-I added my local IP to /etc/hosts as test.breathecam.local, etc.  On
+I added my ZeroTier IP to /etc/hosts as test.breathecam.local, etc.  On
 windows this is: 
     c:\windows\system32\drivers\etc\hosts
 
-We may want to set this as the DNS hostname in raspi-config.  Or maybe not.
-If we have a different local name, then we can access it on the local net.
+We may want to set this as the DNS hostname in raspi-config.  Or maybe
+not.  If we have a different local name, then we can access it by name
+on the local net (not using ZeroTier).
 
 
 VNC access:
@@ -119,8 +122,8 @@ to work.  See breathecam/Code/pi_cam/startvnc script.
 INSTEAD: use raspi-config in a terminal or the graphical version from
 the start menu, and enable "VNC" in interfaces.  This is the normal
 thing, and will create a :0 display.  Do not set the system to boot to
-command prompt, since no VNC session will start on :0, and you will
-get a black screen with "currently unable to show the desktop".
+command prompt, since the VNC session will not start on :0, and you
+will get a black screen with "currently unable to show the desktop".
 
 I also set it to not auto-login.  With these settings (VNC enabled, boot to
 desktop, no auto login), if you start headless, then it will not start all of
@@ -148,6 +151,5 @@ default display doesn't.
 
 
 TODO:
- -- ZeroTier on piquad
  -- Watchdog for capture failing does not work with multi-camera when
     at least one camera is working.

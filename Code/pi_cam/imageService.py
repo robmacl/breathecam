@@ -24,7 +24,10 @@ class ImageService:
 
     def grabMulti(self):
         now = int(time.time())
-        channels = self.mux_channels
+        if self.camera_mux:
+            channels = self.mux_channels
+        else:
+            channels = [0]
         for cam in range(len(channels)):
             self.grabOne(now, cam)
 
